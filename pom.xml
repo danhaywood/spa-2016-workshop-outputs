@@ -41,6 +41,7 @@
         <assertj-core.version>2.4.0</assertj-core.version>
         <lombok.version>1.16.8</lombok.version>
 
+        <isis-module-excel.version>1.13.0-SNAPSHOT</isis-module-excel.version>
         <isis-module-fakedata.version>1.13.0-SNAPSHOT</isis-module-fakedata.version>
 
     </properties>
@@ -297,6 +298,23 @@
                         <groupId>org.isisaddons.module.fakedata</groupId>
                         <artifactId>isis-module-fakedata-dom</artifactId>
                         <version>${isis-module-fakedata.version}</version>
+                    </dependency>
+                </dependencies>
+            </dependencyManagement>
+        </profile>
+        <profile>
+            <id>isisaddons-module-excel</id>
+            <activation>
+                <property>
+                    <name>!skip.isisaddons-module-excel</name>
+                </property>
+            </activation>
+            <dependencyManagement>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.isisaddons.module.excel</groupId>
+                        <artifactId>isis-module-excel-dom</artifactId>
+                        <version>${isis-module-excel.version}</version>
                     </dependency>
                 </dependencies>
             </dependencyManagement>
