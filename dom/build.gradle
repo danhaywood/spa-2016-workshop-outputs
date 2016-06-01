@@ -19,24 +19,30 @@
 //
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-defaultTasks 'compileJava', 'copyClasses'
+buildscript {
+    repositories {
+        maven { url "http://oss.jfrog.org/artifactory/oss-snapshot-local" }
+        jcenter()
+    }
+    dependencies {
+        classpath 'tangram:gradle-plugin:1.1.2'
+    }
+}
+
+plugins {
+    id 'io.franzbecker.gradle-lombok' version '1.6'
+}
 
 apply plugin: 'java'
 apply plugin: 'tangram.tools'
+//apply plugin: 'io.franzbecker.gradle-lombok:1.6'
+
+defaultTasks 'compileJava', 'copyClasses'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 version = (new XmlParser()).parse('pom.xml').parent.version.text()
 
-buildscript {
-  repositories {
-    maven { url "http://oss.jfrog.org/artifactory/oss-snapshot-local" }
-    jcenter()
-  }
-  dependencies {
-    classpath 'tangram:gradle-plugin:1.1.2'
-  }
-}
 repositories {
     mavenLocal()
     maven { url "http://oss.jfrog.org/artifactory/oss-snapshot-local" }
@@ -44,6 +50,11 @@ repositories {
 }
 dependencies {
     compile group: 'org.apache.isis.core', name: 'isis-core-applib', version: '1.13.0-SNAPSHOT'
+    compile group: 'org.togglz', name: 'togglz-core', version: '2.1.0.Final';
+    compile group: 'org.isisaddons.module.security', name: 'isis-module-security-dom', version: '1.13.0-SNAPSHOT';
+}
+lombok {
+    version = "1.16.6"
 }
 task copyClasses << {
     copy {
