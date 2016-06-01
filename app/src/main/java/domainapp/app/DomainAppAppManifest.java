@@ -26,6 +26,8 @@ import java.util.Map;
 import org.apache.isis.applib.AppManifest;
 import org.apache.isis.applib.fixturescripts.FixtureScript;
 
+import org.isisaddons.module.fakedata.FakeDataModule;
+
 import domainapp.dom.DomainAppDomainModule;
 import domainapp.fixture.DomainAppFixtureModule;
 
@@ -43,6 +45,8 @@ public class DomainAppAppManifest implements AppManifest {
                 DomainAppDomainModule.class,  // domain (entities and repositories)
                 DomainAppFixtureModule.class, // fixtures
                 DomainAppAppModule.class      // home page service etc
+
+                ,FakeDataModule.class
         );
     }
 

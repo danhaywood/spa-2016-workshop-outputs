@@ -40,6 +40,9 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <assertj-core.version>2.4.0</assertj-core.version>
         <lombok.version>1.16.8</lombok.version>
+
+        <isis-module-fakedata.version>1.13.0-SNAPSHOT</isis-module-fakedata.version>
+
     </properties>
 
     <repositories>
@@ -280,6 +283,23 @@
             <build>
                 <directory>target-ide</directory>
             </build>
+        </profile>
+        <profile>
+            <id>isisaddons-module-fakedata</id>
+            <activation>
+                <property>
+                    <name>!skip.isisaddons-module-fakedata</name>
+                </property>
+            </activation>
+            <dependencyManagement>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.isisaddons.module.fakedata</groupId>
+                        <artifactId>isis-module-fakedata-dom</artifactId>
+                        <version>${isis-module-fakedata.version}</version>
+                    </dependency>
+                </dependencies>
+            </dependencyManagement>
         </profile>
     </profiles>
 
