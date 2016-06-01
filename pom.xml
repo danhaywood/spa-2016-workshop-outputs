@@ -39,6 +39,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <assertj-core.version>2.4.0</assertj-core.version>
+        <lombok.version>1.16.8</lombok.version>
     </properties>
 
     <repositories>
@@ -256,6 +257,12 @@
                 <groupId>${project.groupId}</groupId>
                 <artifactId>ddd-london-20160601-webapp</artifactId>
                 <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
             </dependency>
 
         </dependencies>
