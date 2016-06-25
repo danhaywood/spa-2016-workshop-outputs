@@ -22,12 +22,12 @@
 
     <parent>
         <groupId>org.apache.isis.example.application</groupId>
-        <artifactId>ddd-london-20160601</artifactId>
+        <artifactId>dev-summer-20160625</artifactId>
         <version>1.13.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>ddd-london-20160601-dom</artifactId>
-    <name>DDD London 20160601 DOM</name>
+    <artifactId>dev-summer-20160625-dom</artifactId>
+    <name>Dev Summer 20160625 DOM</name>
 
     <build>
         <resources>

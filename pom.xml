@@ -22,10 +22,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.apache.isis.example.application</groupId>
-    <artifactId>ddd-london-20160601</artifactId>
+    <artifactId>dev-summer-20160625</artifactId>
     <version>1.13.0-SNAPSHOT</version>
 
-    <name>DDD London 20160601</name>
+    <name>Dev Summer 20160625</name>
 
     <packaging>pom</packaging>
 
@@ -244,22 +244,22 @@
             <!-- this project's own modules -->
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>ddd-london-20160601-app</artifactId>
+                <artifactId>dev-summer-20160625-app</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>ddd-london-20160601-dom</artifactId>
+                <artifactId>dev-summer-20160625-dom</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>ddd-london-20160601-fixture</artifactId>
+                <artifactId>dev-summer-20160625-fixture</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>ddd-london-20160601-webapp</artifactId>
+                <artifactId>dev-summer-20160625-webapp</artifactId>
                 <version>${project.version}</version>
             </dependency>
 

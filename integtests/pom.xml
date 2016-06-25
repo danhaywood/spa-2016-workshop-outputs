@@ -23,12 +23,12 @@
 
     <parent>
         <groupId>org.apache.isis.example.application</groupId>
-        <artifactId>ddd-london-20160601</artifactId>
+        <artifactId>dev-summer-20160625</artifactId>
         <version>1.13.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>ddd-london-20160601-integtests</artifactId>
-    <name>DDD London 20160601 Integration Tests</name>
+    <artifactId>dev-summer-20160625-integtests</artifactId>
+    <name>Dev Summer 20160625 Integration Tests</name>
 
     <build>
         <testResources>
@@ -52,7 +52,7 @@
 
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>ddd-london-20160601-app</artifactId>
+            <artifactId>dev-summer-20160625-app</artifactId>
         </dependency>
 
         <dependency>

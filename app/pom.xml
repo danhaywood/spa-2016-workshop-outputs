@@ -22,12 +22,12 @@
 
     <parent>
         <groupId>org.apache.isis.example.application</groupId>
-        <artifactId>ddd-london-20160601</artifactId>
+        <artifactId>dev-summer-20160625</artifactId>
         <version>1.13.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>ddd-london-20160601-app</artifactId>
-    <name>DDD London 20160601 Application</name>
+    <artifactId>dev-summer-20160625-app</artifactId>
+    <name>Dev Summer 20160625 Application</name>
 
     <build>
         <resources>
@@ -51,7 +51,7 @@
     <dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>ddd-london-20160601-fixture</artifactId>
+            <artifactId>dev-summer-20160625-fixture</artifactId>
         </dependency>
 
         <dependency>
