@@ -22,12 +22,12 @@
 
     <parent>
         <groupId>org.apache.isis.example.application</groupId>
-        <artifactId>dev-summer-20160625</artifactId>
+        <artifactId>spa-20160628</artifactId>
         <version>1.13.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>dev-summer-20160625-app</artifactId>
-    <name>Dev Summer 20160625 Application</name>
+    <artifactId>spa-20160628-app</artifactId>
+    <name>SPA 20160629 Application</name>
 
     <build>
         <resources>
@@ -51,7 +51,7 @@
     <dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>dev-summer-20160625-fixture</artifactId>
+            <artifactId>spa-20160628-fixture</artifactId>
         </dependency>
 
         <dependency>

@@ -22,10 +22,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.apache.isis.example.application</groupId>
-    <artifactId>dev-summer-20160625</artifactId>
+    <artifactId>spa-20160628</artifactId>
     <version>1.13.0-SNAPSHOT</version>
 
-    <name>Dev Summer 20160625</name>
+    <name>SPA 20160629</name>
 
     <packaging>pom</packaging>
 
@@ -244,22 +244,22 @@
             <!-- this project's own modules -->
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>dev-summer-20160625-app</artifactId>
+                <artifactId>spa-20160628-app</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>dev-summer-20160625-dom</artifactId>
+                <artifactId>spa-20160628-dom</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>dev-summer-20160625-fixture</artifactId>
+                <artifactId>spa-20160628-fixture</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>dev-summer-20160625-webapp</artifactId>
+                <artifactId>spa-20160628-webapp</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
