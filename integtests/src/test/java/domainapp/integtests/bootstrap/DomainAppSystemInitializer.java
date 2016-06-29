@@ -21,7 +21,7 @@ package domainapp.integtests.bootstrap;
 import org.apache.isis.core.integtestsupport.IsisSystemForTest;
 import org.apache.isis.objectstore.jdo.datanucleus.IsisConfigurationForJdoIntegTests;
 
-import domainapp.app.DomainAppAppManifest;
+import domainapp.app.DomainAppAppManifestWithFixtures;
 
 public class DomainAppSystemInitializer {
 
@@ -30,7 +30,7 @@ public class DomainAppSystemInitializer {
         if(isft == null) {
             isft = new IsisSystemForTest.Builder()
                     .withLoggingAt(org.apache.log4j.Level.INFO)
-                    .with(new DomainAppAppManifest())
+                    .with(new DomainAppAppManifestWithFixtures())
                     .with(new IsisConfigurationForJdoIntegTests())
                     .build();
             isft.setUpSystem();
