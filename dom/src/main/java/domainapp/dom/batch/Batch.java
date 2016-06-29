@@ -100,10 +100,11 @@ public class Batch implements Comparable<Batch>, WithBatchState {
             semantics = SemanticsOf.NON_IDEMPOTENT
     )
     public Batch transfer(final FermentationVessel vessel) {
-        getVessels().add(vessel);
-        vessel.setBatch(this);
-        setState(BatchState.FERMENTING);
         vessel.setState(FermentationVessel.State.FERMENTING);
+        // bidirectional relationship, so no need/don't also add to getVessels
+        vessel.setBatch(this);
+
+        setState(BatchState.FERMENTING);
         return this;
     }
     public List<FermentationVessel> choices0Transfer() {
