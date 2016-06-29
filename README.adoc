@@ -1,0 +1,54 @@
+= SPA 2016 Session Outputs
+
+This repository holds the outputs of the workshop session
+link:http://www.spaconference.org/spa2016/sessions/session677.html[Naked Objects: 14 Years On] session, run at
+link:http://spaconference.org/spa2016/[SPA 2016] on 28th Jun 2016.
+
+
+== Session Structure & Scope
+
+The original plan of the session had been to allow attendees to perform a self-guided workshop, as per
+link:http://www.danhaywood.com/spa2016/#/[this tutorial slide deck] (link:https://github.com/danhaywood/spa2016[source code]).
+After a brief discussion we decided instead to build a single application together using some "mob programming".
+
+The session ran as two half-day sessions.  The brewery domain was selected during the first such session; one of the
+attendees - who has set up his own micro-brewery - suggested this domain and acted as the domain expert.  In the second
+session the same domain was also used (some attendees stayed all day, and the domain expert came back in for the last
+hour or so).
+
+
+== Building and Running the App
+
+To build the app:
+
+[source,bash]
+----
+git clone https://github.com/danhaywood/spa2016-workshop-outputs.git .
+mvn clean install
+----
+
+
+To run the app:
+
+[source,bash]
+----
+cd webapp && mvn jetty:run
+----
+
+The `RecreateBrewery` fixture script can be run in from the _Prototyping_ menu.
+
+
+You can load and run from within the IDE using link:http://isis.apache.org/guides/dg.html#_dg_ide[these instructions]
+on the link:http://isis.apache.org/[Apache Isis] website.  Use `domainapp.app.DomainAppAppManifest` or `domainapp.app.DomainAppAppManifestWithFixtures` as the app manifest.
+
+
+
+== Integration Testing
+
+During the workshop we focused just on rapid prototyping of the domain; we discussed but did not demonstrate how to
+ write integration tests to verify the behaviour.
+
+As a quick demo, I've since created a couple of integration tests for the "mash in" and "transfer" behaviours.  The
+first of these is implemented as a (slightly artificial) mixin action, the second as a regular entity action.
+
+The tests can be found link:https://github.com/danhaywood/spa2016-workshop-outputs/tree/master/integtests/src/test/java/domainapp/integtests/tests/modules/simple[here].
