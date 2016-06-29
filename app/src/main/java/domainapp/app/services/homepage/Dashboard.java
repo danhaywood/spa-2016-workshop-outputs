@@ -21,31 +21,47 @@ package domainapp.app.services.homepage;
 import java.util.List;
 
 import org.apache.isis.applib.annotation.ViewModel;
-import org.apache.isis.applib.services.i18n.TranslatableString;
 
-import domainapp.dom.simple.SimpleObject;
-import domainapp.dom.simple.SimpleObjects;
+import domainapp.dom.batch.Batch;
+import domainapp.dom.batch.BatchRepository;
+import domainapp.dom.fvessel.FermentationVessel;
+import domainapp.dom.fvessel.FermentationVessels;
+import domainapp.dom.recipe.Recipe;
+import domainapp.dom.recipe.RecipeRepository;
 
 @ViewModel
-public class HomePageViewModel {
+public class Dashboard {
 
     //region > title
-    public TranslatableString title() {
-        return TranslatableString.tr("{num} objects", "num", getObjects().size());
+    public String title() {
+        return "Dashboard";
     }
     //endregion
 
-    //region > object (collection)
-    @org.apache.isis.applib.annotation.HomePage
-    public List<SimpleObject> getObjects() {
-        return simpleObjects.listAll();
+    public List<Batch> getBatches() {
+        return batchRepository.listAll();
     }
-    //endregion
+
+    public List<Recipe> getRecipes() {
+        return recipeRepository.listAll();
+    }
+
+    public List<FermentationVessel> getActiveVessels() {
+        return fermentationVessels.listAll();
+    }
+
+    public List<FermentationVessel> getOtherVessels() {
+        return fermentationVessels.listAll();
+    }
 
     //region > injected services
 
     @javax.inject.Inject
-    SimpleObjects simpleObjects;
+    FermentationVessels fermentationVessels;
+    @javax.inject.Inject
+    BatchRepository batchRepository;
+    @javax.inject.Inject
+    RecipeRepository recipeRepository;
 
     //endregion
 }

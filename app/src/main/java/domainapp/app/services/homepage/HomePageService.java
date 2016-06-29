@@ -36,8 +36,8 @@ public class HomePageService {
             semantics = SemanticsOf.SAFE
     )
     @HomePage
-    public HomePageViewModel homePage() {
-        return serviceRegistry.injectServicesInto(new HomePageViewModel());
+    public Dashboard homePage() {
+        return serviceRegistry.injectServicesInto(new Dashboard());
     }
 
     //endregion

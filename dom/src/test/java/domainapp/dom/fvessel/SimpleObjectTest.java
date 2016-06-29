@@ -14,7 +14,7 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package domainapp.dom.simple;
+package domainapp.dom.fvessel;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -23,11 +23,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class SimpleObjectTest {
 
-    SimpleObject simpleObject;
+    FermentationVessel fermentationVessel;
 
     @Before
     public void setUp() throws Exception {
-        simpleObject = new SimpleObject();
+        fermentationVessel = new FermentationVessel();
     }
 
     public static class Name extends SimpleObjectTest {
@@ -36,13 +36,13 @@ public class SimpleObjectTest {
         public void happyCase() throws Exception {
             // given
             String name = "Foobar";
-            assertThat(simpleObject.getName()).isNull();
+            assertThat(fermentationVessel.getName()).isNull();
 
             // when
-            simpleObject.setName(name);
+            fermentationVessel.setName(name);
 
             // then
-            assertThat(simpleObject.getName()).isEqualTo(name);
+            assertThat(fermentationVessel.getName()).isEqualTo(name);
         }
     }
 

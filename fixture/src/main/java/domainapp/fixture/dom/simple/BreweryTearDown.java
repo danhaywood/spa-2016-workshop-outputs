@@ -22,11 +22,13 @@ package domainapp.fixture.dom.simple;
 import org.apache.isis.applib.fixturescripts.FixtureScript;
 import org.apache.isis.applib.services.jdosupport.IsisJdoSupport;
 
-public class SimpleObjectsTearDown extends FixtureScript {
+public class BreweryTearDown extends FixtureScript {
 
     @Override
     protected void execute(ExecutionContext executionContext) {
-        isisJdoSupport.executeUpdate("delete from \"simple\".\"SimpleObject\"");
+        isisJdoSupport.executeUpdate("delete from \"fvessel\".\"FermentationVessel\"");
+        isisJdoSupport.executeUpdate("delete from \"batch\".\"Batch\"");
+        isisJdoSupport.executeUpdate("delete from \"recipe\".\"Recipe\"");
     }
 
 

@@ -21,10 +21,11 @@ package domainapp.fixture.dom.simple;
 
 import org.apache.isis.applib.fixturescripts.FixtureScript;
 
-import domainapp.dom.simple.SimpleObject;
-import domainapp.dom.simple.SimpleObjects;
+import domainapp.dom.fvessel.FermentationVessel;
+import domainapp.dom.fvessel.FermentationVessels;
+import domainapp.dom.fvessel.VesselType;
 
-public class SimpleObjectCreate extends FixtureScript {
+public class FermentationVesselCreate extends FixtureScript {
 
     //region > name (input)
     private String name;
@@ -35,7 +36,7 @@ public class SimpleObjectCreate extends FixtureScript {
         return name;
     }
 
-    public SimpleObjectCreate setName(final String name) {
+    public FermentationVesselCreate setName(final String name) {
         this.name = name;
         return this;
     }
@@ -43,14 +44,14 @@ public class SimpleObjectCreate extends FixtureScript {
 
 
     //region > simpleObject (output)
-    private SimpleObject simpleObject;
+    private FermentationVessel fermentationVessel;
 
     /**
-     * The created simple object (output).
+     * The created fvessel object (output).
      * @return
      */
-    public SimpleObject getSimpleObject() {
-        return simpleObject;
+    public FermentationVessel getFermentationVessel() {
+        return fermentationVessel;
     }
     //endregion
 
@@ -59,13 +60,13 @@ public class SimpleObjectCreate extends FixtureScript {
 
         String name = checkParam("name", ec, String.class);
 
-        this.simpleObject = wrap(simpleObjects).create(name);
+        this.fermentationVessel = wrap(fermentationVessels).create(name, VesselType.CYLINDROCONICAL);
 
         // also make available to UI
-        ec.addResult(this, simpleObject);
+        ec.addResult(this, fermentationVessel);
     }
 
     @javax.inject.Inject
-    private SimpleObjects simpleObjects;
+    private FermentationVessels fermentationVessels;
 
 }

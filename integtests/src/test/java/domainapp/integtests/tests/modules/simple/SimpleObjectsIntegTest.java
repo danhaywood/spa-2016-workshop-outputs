@@ -33,10 +33,11 @@ import org.junit.Test;
 import org.apache.isis.applib.fixturescripts.FixtureScript;
 import org.apache.isis.applib.fixturescripts.FixtureScripts;
 
-import domainapp.dom.simple.SimpleObject;
-import domainapp.dom.simple.SimpleObjects;
-import domainapp.fixture.dom.simple.SimpleObjectsTearDown;
-import domainapp.fixture.scenarios.RecreateSimpleObjects;
+import domainapp.dom.fvessel.FermentationVessel;
+import domainapp.dom.fvessel.FermentationVessels;
+import domainapp.dom.fvessel.VesselType;
+import domainapp.fixture.dom.simple.BreweryTearDown;
+import domainapp.fixture.scenarios.RecreateBrewery;
 import domainapp.integtests.tests.DomainAppIntegTest;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -45,7 +46,7 @@ public class SimpleObjectsIntegTest extends DomainAppIntegTest {
     @Inject
     FixtureScripts fixtureScripts;
     @Inject
-    SimpleObjects simpleObjects;
+    FermentationVessels fermentationVessels;
 
     public static class ListAll extends SimpleObjectsIntegTest {
 
@@ -53,30 +54,26 @@ public class SimpleObjectsIntegTest extends DomainAppIntegTest {
         public void happyCase() throws Exception {
 
             // given
-            RecreateSimpleObjects fs = new RecreateSimpleObjects();
+            RecreateBrewery fs = new RecreateBrewery();
             fixtureScripts.runFixtureScript(fs, null);
             nextTransaction();
 
             // when
-            final List<SimpleObject> all = wrap(simpleObjects).listAll();
+            final List<FermentationVessel> all = wrap(fermentationVessels).listAll();
 
             // then
-            assertThat(all).hasSize(fs.getSimpleObjects().size());
-
-            SimpleObject simpleObject = wrap(all.get(0));
-            assertThat(simpleObject.getName()).isEqualTo(fs.getSimpleObjects().get(0).getName());
         }
 
         @Test
         public void whenNone() throws Exception {
 
             // given
-            FixtureScript fs = new SimpleObjectsTearDown();
+            FixtureScript fs = new BreweryTearDown();
             fixtureScripts.runFixtureScript(fs, null);
             nextTransaction();
 
             // when
-            final List<SimpleObject> all = wrap(simpleObjects).listAll();
+            final List<FermentationVessel> all = wrap(fermentationVessels).listAll();
 
             // then
             assertThat(all).hasSize(0);
@@ -89,15 +86,15 @@ public class SimpleObjectsIntegTest extends DomainAppIntegTest {
         public void happyCase() throws Exception {
 
             // given
-            FixtureScript fs = new SimpleObjectsTearDown();
+            FixtureScript fs = new BreweryTearDown();
             fixtureScripts.runFixtureScript(fs, null);
             nextTransaction();
 
             // when
-            wrap(simpleObjects).create("Faz");
+            wrap(fermentationVessels).create("Faz", VesselType.CYLINDROCONICAL);
 
             // then
-            final List<SimpleObject> all = wrap(simpleObjects).listAll();
+            final List<FermentationVessel> all = wrap(fermentationVessels).listAll();
             assertThat(all).hasSize(1);
         }
 
@@ -105,17 +102,17 @@ public class SimpleObjectsIntegTest extends DomainAppIntegTest {
         public void whenAlreadyExists() throws Exception {
 
             // given
-            FixtureScript fs = new SimpleObjectsTearDown();
+            FixtureScript fs = new BreweryTearDown();
             fixtureScripts.runFixtureScript(fs, null);
             nextTransaction();
-            wrap(simpleObjects).create("Faz");
+            wrap(fermentationVessels).create("Faz", VesselType.CYLINDROCONICAL);
             nextTransaction();
 
             // then
             expectedExceptions.expectCause(causalChainContains(SQLIntegrityConstraintViolationException.class));
 
             // when
-            wrap(simpleObjects).create("Faz");
+            wrap(fermentationVessels).create("Faz", VesselType.CYLINDROCONICAL);
             nextTransaction();
         }
 

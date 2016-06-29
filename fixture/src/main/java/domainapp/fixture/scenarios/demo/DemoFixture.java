@@ -30,8 +30,8 @@ import org.apache.isis.applib.fixturescripts.FixtureScript;
 
 import org.isisaddons.module.excel.dom.ExcelFixture;
 
-import domainapp.dom.simple.SimpleObject;
-import domainapp.fixture.dom.simple.SimpleObjectsTearDown;
+import domainapp.dom.fvessel.FermentationVessel;
+import domainapp.fixture.dom.simple.BreweryTearDown;
 import lombok.Getter;
 
 public class DemoFixture extends FixtureScript {
@@ -44,14 +44,14 @@ public class DemoFixture extends FixtureScript {
      * The objects created by this fixture (output).
      */
     @Getter
-    private final List<SimpleObject> simpleObjects = Lists.newArrayList();
+    private final List<FermentationVessel> fermentationVessels = Lists.newArrayList();
 
 
     @Override
     protected void execute(final ExecutionContext ec) {
 
         // zap everything
-        ec.executeChild(this, new SimpleObjectsTearDown());
+        ec.executeChild(this, new BreweryTearDown());
 
         // load data from spreadsheet
         final URL spreadsheet = Resources.getResource(DemoFixture.class, "DemoFixture.xlsx");
@@ -61,7 +61,7 @@ public class DemoFixture extends FixtureScript {
         // make objects created by ExcelFixture available to our caller.
         final Map<Class, List<Object>> objectsByClass = fs.getObjectsByClass();
 
-        getSimpleObjects().addAll((List)objectsByClass.get(DemoFixtureRowHandler.class));
+        getFermentationVessels().addAll((List)objectsByClass.get(DemoFixtureRowHandler.class));
     }
 
     private Class[] getHandlers() {

@@ -10,8 +10,9 @@ import org.apache.isis.applib.fixturescripts.FixtureScript;
 import org.isisaddons.module.excel.dom.ExcelFixture;
 import org.isisaddons.module.excel.dom.ExcelFixtureRowHandler;
 
-import domainapp.dom.simple.SimpleObject;
-import domainapp.dom.simple.SimpleObjects;
+import domainapp.dom.fvessel.FermentationVessel;
+import domainapp.dom.fvessel.FermentationVessels;
+import domainapp.dom.fvessel.VesselType;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -26,15 +27,15 @@ public class DemoFixtureRowHandler implements ExcelFixtureRowHandler {
             final ExcelFixture excelFixture,
             final Object previousRow) {
 
-        final List<SimpleObject> matching = repository.findByName(name);
+        final List<FermentationVessel> matching = repository.findByName(name);
         if(matching.isEmpty()) {
-            SimpleObject simpleObject = repository.create(name);
-            executionContext.addResult(excelFixture, simpleObject);
+            FermentationVessel fermentationVessel = repository.create(name, VesselType.CYLINDROCONICAL);
+            executionContext.addResult(excelFixture, fermentationVessel);
         }
         return Collections.emptyList();
     }
 
     @Inject
-    SimpleObjects repository;
+    FermentationVessels repository;
 
 }

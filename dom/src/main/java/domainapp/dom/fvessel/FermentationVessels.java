@@ -16,7 +16,7 @@
  *  specific language governing permissions and limitations
  *  under the License.
  */
-package domainapp.dom.simple;
+package domainapp.dom.fvessel;
 
 import java.util.List;
 
@@ -36,12 +36,12 @@ import org.apache.isis.applib.services.repository.RepositoryService;
 
 @DomainService(
         nature = NatureOfService.VIEW,
-        repositoryFor = SimpleObject.class
+        repositoryFor = FermentationVessel.class
 )
 @DomainServiceLayout(
         menuOrder = "10"
 )
-public class SimpleObjects {
+public class FermentationVessels {
 
     //region > title
     public TranslatableString title() {
@@ -50,7 +50,7 @@ public class SimpleObjects {
     //endregion
 
     //region > listAll (action)
-    public static class ListAllEvent extends ActionDomainEvent<SimpleObjects> {}
+    public static class ListAllEvent extends ActionDomainEvent<FermentationVessels> {}
     @Action(
             semantics = SemanticsOf.SAFE,
             domainEvent = ListAllEvent.class
@@ -59,13 +59,13 @@ public class SimpleObjects {
             bookmarking = BookmarkPolicy.AS_ROOT
     )
     @MemberOrder(sequence = "1")
-    public List<SimpleObject> listAll() {
-        return repositoryService.allInstances(SimpleObject.class);
+    public List<FermentationVessel> listAll() {
+        return repositoryService.allInstances(FermentationVessel.class);
     }
     //endregion
 
     //region > findByName (action)
-    public static class FindByNameEvent extends ActionDomainEvent<SimpleObjects> {}
+    public static class FindByNameEvent extends ActionDomainEvent<FermentationVessels> {}
     @Action(
             semantics = SemanticsOf.SAFE,
             domainEvent = FindByNameEvent.class
@@ -74,29 +74,31 @@ public class SimpleObjects {
             bookmarking = BookmarkPolicy.AS_ROOT
     )
     @MemberOrder(sequence = "2")
-    public List<SimpleObject> findByName(
+    public List<FermentationVessel> findByName(
             @ParameterLayout(named="Name")
             final String name
     ) {
         return repositoryService.allMatches(
                 new QueryDefault<>(
-                        SimpleObject.class,
+                        FermentationVessel.class,
                         "findByName",
                         "name", name));
     }
     //endregion
 
     //region > create (action)
-    public static class CreateDomainEvent extends ActionDomainEvent<SimpleObjects> {}
+    public static class CreateDomainEvent extends ActionDomainEvent<FermentationVessels> {}
     @Action(
             domainEvent = CreateDomainEvent.class
     )
     @MemberOrder(sequence = "3")
-    public SimpleObject create(
-            @ParameterLayout(named="Name")
-            final String name) {
-        final SimpleObject obj = repositoryService.instantiate(SimpleObject.class);
+    public FermentationVessel create(
+            final String name,
+            final VesselType type) {
+        final FermentationVessel obj = repositoryService.instantiate(FermentationVessel.class);
         obj.setName(name);
+        obj.setType(type);
+        obj.setState(FermentationVessel.State.READY_FOR_BATCH);
         repositoryService.persist(obj);
         return obj;
     }

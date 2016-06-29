@@ -16,7 +16,7 @@
  *  specific language governing permissions and limitations
  *  under the License.
  */
-package domainapp.dom.simple;
+package domainapp.dom.fvessel;
 
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdentityType;
@@ -36,13 +36,14 @@ import org.apache.isis.applib.services.i18n.TranslatableString;
 import org.apache.isis.applib.services.repository.RepositoryService;
 import org.apache.isis.applib.util.ObjectContracts;
 
+import domainapp.dom.batch.Batch;
 import lombok.Getter;
 import lombok.Setter;
 
 @javax.jdo.annotations.PersistenceCapable(
         identityType=IdentityType.DATASTORE,
-        schema = "simple",
-        table = "SimpleObject"
+        schema = "fvessel",
+        table = "FermentationVessel"
 )
 @javax.jdo.annotations.DatastoreIdentity(
         strategy=javax.jdo.annotations.IdGeneratorStrategy.IDENTITY,
@@ -55,32 +56,58 @@ import lombok.Setter;
         @javax.jdo.annotations.Query(
                 name = "find", language = "JDOQL",
                 value = "SELECT "
-                        + "FROM domainapp.dom.simple.SimpleObject "),
+                        + "FROM domainapp.dom.fvessel.SimpleObject "),
         @javax.jdo.annotations.Query(
                 name = "findByName", language = "JDOQL",
                 value = "SELECT "
-                        + "FROM domainapp.dom.simple.SimpleObject "
+                        + "FROM domainapp.dom.fvessel.SimpleObject "
                         + "WHERE name.indexOf(:name) >= 0 ")
 })
 @javax.jdo.annotations.Unique(name="SimpleObject_name_UNQ", members = {"name"})
 @DomainObject(
         publishing = Publishing.ENABLED
 )
-public class SimpleObject implements Comparable<SimpleObject> {
+public class FermentationVessel implements Comparable<FermentationVessel> {
+
+
+    public enum State {
+        CLEAN,
+        QUICK_CIP,
+        READY_FOR_BATCH,
+        FERMENTING,
+        DIRTY,
+        CIP, // clean-in-place
+        OUT_OF_ORDER
+    }
 
     //region > title
 
-    public TranslatableString title() {
-        return TranslatableString.tr("Object: {name}", "name", getName());
+    public String title() {
+        return getName();
     }
 
     //endregion
+
+    @Column(allowsNull = "true")
+    @Property()
+    @Getter @Setter
+    private Batch batch;
+
+    @Column(allowsNull = "false")
+    @Property()
+    @Getter @Setter
+    private VesselType type;
+
+    @Column(allowsNull = "true") // TODO
+    @Property()
+    @Getter @Setter
+    private State state;
 
     //region > name (property)
 
     public static final int NAME_LENGTH = 40;
 
-    public static class NameDomainEvent extends PropertyDomainEvent<SimpleObject,String> {}
+    public static class NameDomainEvent extends PropertyDomainEvent<FermentationVessel,String> {}
     @javax.jdo.annotations.Column(
             allowsNull="false",
             length = NAME_LENGTH
@@ -99,7 +126,7 @@ public class SimpleObject implements Comparable<SimpleObject> {
 
     //region > updateName (action)
 
-    public static class UpdateNameDomainEvent extends ActionDomainEvent<SimpleObject> {}
+    public static class UpdateNameDomainEvent extends ActionDomainEvent<FermentationVessel> {}
     @Action(
             command = CommandReification.ENABLED,
             publishing = Publishing.ENABLED,
@@ -107,7 +134,7 @@ public class SimpleObject implements Comparable<SimpleObject> {
             domainEvent = UpdateNameDomainEvent.class
     )
     @MemberOrder(name="name", sequence = "1") // associate with 'name' property
-    public SimpleObject updateName(@ParameterLayout(named="Name") final String name) {
+    public FermentationVessel updateName(@ParameterLayout(named="Name") final String name) {
         setName(name);
         return this;
     }
@@ -122,7 +149,7 @@ public class SimpleObject implements Comparable<SimpleObject> {
 
     //region > delete (action)
 
-    public static class DeleteDomainEvent extends ActionDomainEvent<SimpleObject> {}
+    public static class DeleteDomainEvent extends ActionDomainEvent<FermentationVessel> {}
     @Action(
             domainEvent = DeleteDomainEvent.class,
             semantics = SemanticsOf.NON_IDEMPOTENT_ARE_YOU_SURE
@@ -135,7 +162,7 @@ public class SimpleObject implements Comparable<SimpleObject> {
 
     //region > compareTo
     @Override
-    public int compareTo(final SimpleObject other) {
+    public int compareTo(final FermentationVessel other) {
         return ObjectContracts.compare(this, other, "name");
     }
 
