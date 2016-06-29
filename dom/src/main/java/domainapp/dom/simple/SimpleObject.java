@@ -86,8 +86,6 @@ public class SimpleObject implements Comparable<SimpleObject> {
             length = NAME_LENGTH
     )
     @Property(
-        command = CommandReification.ENABLED,
-        publishing = Publishing.ENABLED,
         domainEvent = NameDomainEvent.class
     )
     @Getter @Setter
