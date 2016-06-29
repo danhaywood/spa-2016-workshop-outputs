@@ -1,10 +1,11 @@
 package domainapp.dom.batch;
 
 import org.apache.isis.applib.annotation.Action;
-import org.apache.isis.applib.annotation.RestrictTo;
+import org.apache.isis.applib.annotation.Mixin;
 import org.apache.isis.applib.annotation.SemanticsOf;
 
-//@Mixin
+// demonstrates how to factor out functionality into mixins, by way of an interface
+@Mixin
 public class WithBatchState_mashIn {
 
     private final WithBatchState withBatchState;

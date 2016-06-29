@@ -84,13 +84,16 @@ public class Batch implements Comparable<Batch>, WithBatchState {
     @Getter @Setter
     private BatchState state;
 
-    @Action(
-            semantics = SemanticsOf.NON_IDEMPOTENT_ARE_YOU_SURE
-    )
-    public Batch mashIn() {
-        setState(BatchState.MASHED_IN);
-        return this;
-    }
+
+    // converted to WithBatchState_mashIn
+
+//    @Action(
+//            semantics = SemanticsOf.NON_IDEMPOTENT_ARE_YOU_SURE
+//    )
+//    public Batch mashIn() {
+//        setState(BatchState.MASHED_IN);
+//        return this;
+//    }
 
 
     public static class TransferDomainEvent extends ActionDomainEvent<Batch> {}
