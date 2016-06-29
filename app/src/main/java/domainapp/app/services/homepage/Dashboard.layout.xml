@@ -31,18 +31,18 @@
     </bs3:row>
     <bs3:row>
         <bs3:col span="4">
-            <collection id="recipes"/>
+            <collection id="recipes" defaultView="table"/>
         </bs3:col>
         <bs3:col span="4">
-            <collection id="batches"/>
+            <collection id="batches" defaultView="table"/>
         </bs3:col>
         <bs3:col span="4">
-            <collection id="activeVessels"/>
-            <collection id="otherVessels"/>
+            <collection id="activeVessels" defaultView="table"/>
+            <collection id="otherVessels" defaultView="table"/>
         </bs3:col>
     </bs3:row>
     <bs3:row>
-        <bs3:col span="12">
+        <bs3:col span="12" unreferencedCollections="true">
             <fieldSet name="General" id="general" unreferencedProperties="true"/>
         </bs3:col>
     </bs3:row>
