@@ -47,17 +47,27 @@ on the link:http://isis.apache.org/[Apache Isis] website.  Use `domainapp.app.Do
 
 == Screenshots
 
+=== Dashboard
+
 The initial dashboard.  nb: this is just a quick sketch.
 
 image::{_imagesdir}/dashboard.png[link="{_imagesdir}/dashboard.png"]
+
+=== Mashing-in
 
 Batch object, about to mash-in:
 
 image::{_imagesdir}/batch-about-to-mash-in.png[link="{_imagesdir}/batch-about-to-mash-in.png"]
 
+
+=== Transfer
+
 Batch object, about to transfer to an available fermentation vessel:
 
 image::{_imagesdir}/batch-about-to-transfer-to-fermentation-vessel.png[link="{_imagesdir}/batch-about-to-transfer-to-fermentation-vessel.png"]
+
+
+=== Fermenting
 
 Batch object, now fermenting:
 
