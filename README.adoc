@@ -4,6 +4,8 @@ This repository holds the outputs of the workshop session
 link:http://www.spaconference.org/spa2016/sessions/session677.html[Naked Objects: 14 Years On] session, run at
 link:http://spaconference.org/spa2016/[SPA 2016] on 28th Jun 2016.
 
+:_imagesdir: images/
+
 
 == Session Structure & Scope
 
@@ -41,6 +43,29 @@ The `RecreateBrewery` fixture script can be run in from the _Prototyping_ menu.
 You can load and run from within the IDE using link:http://isis.apache.org/guides/dg.html#_dg_ide[these instructions]
 on the link:http://isis.apache.org/[Apache Isis] website.  Use `domainapp.app.DomainAppAppManifest` or `domainapp.app.DomainAppAppManifestWithFixtures` as the app manifest.
 
+
+
+== Screenshots
+
+The initial dashboard.  nb: this is just a quick sketch.
+
+image::{_imagesdir}/dashboard.png[link="{_imagesdir}/dashboard.png"]
+
+Batch object, about to mash-in:
+
+image::{_imagesdir}/batch-about-to-mash-in.png[link="{_imagesdir}/batch-about-to-mash-in.png"]
+
+Batch object, about to transfer to an available fermentation vessel:
+
+image::{_imagesdir}/batch-about-to-transfer-to-fermentation-vessel.png[link="{_imagesdir}/batch-about-to-transfer-to-fermentation-vessel.png"]
+
+Batch object, now fermenting:
+
+image::{_imagesdir}/batch-now-fermenting.png[link="{_imagesdir}/batch-now-fermenting.png"]
+
+Fermentation vessel, with batch:
+
+image::{_imagesdir}/fermentation-vessel-with-batch.png[link="{_imagesdir}/fermentation-vessel-with-batch.png"]
 
 
 == Integration Testing
